@@ -8,8 +8,17 @@
     
     <!-- Bootstrap 5 CSS -->  
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
+
+    <!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    
+
+   
     <!-- Font Awesome 5 -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'>
+
+
     
 	<!-- Demo CSS -->
 	<link rel="stylesheet" href="css/demo.css">
@@ -21,29 +30,28 @@
   <article>
 
     <!-- partial:index.partial.html -->
-<div class="container d-flex justify-content-center pt-2">
-</div>
+
 
 <div class="container d-flex justify-content-center" style="min-width:720px!important">
   <div class="col-11 col-offset-2">
-    <div class="progress mt-3" style="height: 30px;">
+    <div class="progress mt-1" style="height: 30px;">
       <div class="progress-bar progress-bar-striped progress-bar-animated" style="font-weight:bold; font-size:15px;" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
+    <form id="KYC_form">
     <div class="card mt-3">
-      
-        <div class="card-body p-4 step" >
+        <div class="card-body p-4 step">
         <div class="text-center">
-          <h5 class="card-title font-weight-bold pb-2">IDENTITY DETAILS</h5>
+          <h5 class="card-title font-weight-bold pb-2"><b>IDENTITY DETAILS</b></h5>
         </div>
         <div id="identity_details" class="form-group row">
           <div class="mb-3 row">
-            <div class="col-3"><label for="name">Name<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-3"><label for="name" class="fw-bold">Name<b style="color: #dc3545;">*</b></label></div>
             <div class="col-9"><input type="text" name="name" class="form-control" id="name" required></div>
             <div class="invalid-feedback">This field is required</div>
           </div>
           
           <div class="mb-3 row">
-            <div class="col-3"><label>Gender<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-3"><label class="fw-bold">Gender<b style="color: #dc3545;">*</b></label></div>
             <div class="col-9">  
               <input class="form-check-input" type="radio" name="gender" id="male" value="male">
               <label class="form-check-label me-5" for="male">Male</label>
@@ -56,7 +64,7 @@
           </div>
 
           <div class="mb-3 row" >
-            <div class="col-3"><label>Marital Status<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-3"><label class="fw-bold">Marital Status<b style="color: #dc3545;">*</b></label></div>
             <div class="col-9">
               <input class="form-check-input" type="radio" name="m_status" id="single" value="single">
               <label class="form-check-label me-4" for="single">Single</label>
@@ -66,19 +74,26 @@
             <div class="invalid-feedback">This field is required</div>
           </div>
 
-          <div class="mb-3 row">
-            <div class="col-3"><label class="form-check-label" for="date">Date of Birth<b style="color: #dc3545;">*</b></label></div>
-            <div class="col-9"><input type="date" class="form-control" id="date"></div>
-          </div>
+         <div class="form-group mb-3 row">
+            <div class="col-3"><label class="fw-bold form-check-label" for="date">Date of Birth<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-9">
+              <div class="input-group date">
+                <input id="b_date" data-date-end-date="0d" class="form-control" required>
+              </div>
+            </div>
+          </div>`
+
+        
+
 
           <div class="mb-3 row">
-            <div class="col-3"><label for="nationality">Nationality<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-3"><label class="fw-bold" for="nationality">Nationality<b style="color: #dc3545;">*</b></label></div>
             <div class="col-9"><input type="text" name="nationality" class="form-control" id="nationality" required></div>
             <div class="invalid-feedback">This field is required</div>
           </div>
 
           <div class="mb-3 row">
-            <div class="col-3"><label>Status<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-3"><label class="fw-bold">Status<b style="color: #dc3545;">*</b></label></div>
             <div class="col-9">  
               <input class="form-check-input" type="radio" name="status" id="resident" value="resident">
               <label class="form-check-label me-5" for="resident">Resident</label>
@@ -90,15 +105,20 @@
             <div class="invalid-feedback">This field is required</div>
           </div>
 
-          <div class="mb-3 row">
-            <div class="col-3"><label for="pan">PAN Number<b style="color: #dc3545;">*</b></label></div>
-            <div class="col-9"><input type="text" name="pan" class="form-control" id="pan" required></div>
-            <div class="invalid-feedback">This field is required</div>
+          <div class="row">
+            <div class="col-3"><label class="fw-bold" for="pan">PAN Number<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-9">
+              <input type="text" name="pan" class="form-control text-uppercase" id="pan" required>
+              <p id="pan_msg" class="text-danger"></p>
+            </div>
+            
+            <div class="invalid-feedback"></div>
+            
           </div>
 
           <div class="mb-3 row">
-            <div class="col-3"><label for="aadhar">Aadhar Number<b style="color: #dc3545;">*</b></label></div>
-            <div class="col-9"><input type="text" name="aadhar" class="form-control" id="last_aadhar" required></div>
+            <div class="col-3"><label class="fw-bold" for="aadhar">Aadhar Number<b style="color: #dc3545;">*</b></label></div>
+            <div class="col-9"><input type="text" name="aadhar" class="form-control" minlength="12" maxlength="12" id="last_aadhar" required></div>
             <div class="invalid-feedback">This field is required</div>
           </div>
         </div>        
@@ -106,16 +126,16 @@
 
       <div id="address_details" class="card-body p-4 step" style="display: none;">
         <div class="text-center">
-          <h5 class="card-title font-weight-bold pb-2">ADDRESS DETAILS</h5>
+          <h5 class="card-title fw-bold pb-2">ADDRESS DETAILS</h5>
         </div>
         <div class="mb-3 row">
-          <div class="col-3"><label for="permanent_address">Permanent Address<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-3"><label class="fw-bold" for="permanent_address">Permanent Address<b style="color: #dc3545;">*</b></label></div>
           <div class="col-9"><textarea type="text" name="permanent_address" class="form-control" id="permanent_address" required></textarea></div>
           <div class="invalid-feedback">This field is required</div>
         </div>
 
         <div class="mb-3 row">
-          <div class="col-3"><label for="communication_address">Communication Address<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-3"><label class="fw-bold" for="communication_address">Communication Address<b style="color: #dc3545;">*</b></label></div>
           <div class="col-9">
             <input class="form-check-input" type="checkbox" id="same" />
             <label for="same">Same as above</label>
@@ -125,49 +145,57 @@
         </div>
 
         <div class="mb-3 row">
-          <div class="col-3"><label for="mobile">Mobile Number<b style="color: #dc3545;">*</b></label></div>
-          <div class="col-9"><input type="text" name="mobile" class="form-control" id="mobile" required></div>
+          <div class="col-3"><label class="fw-bold" for="mobile">Mobile Number<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-9"><input type="text" name="mobile" class="form-control" minlength="10" maxlength="10" id="mobile" required></div>
           <div class="invalid-feedback">This field is required</div>
         </div>
 
-        <div class="mb-3 row">
-          <div class="col-3"><label for="email">Email<b style="color: #dc3545;">*</b></label></div>
-          <div class="col-9"><input type="email" name="email" class="form-control" id="last_email" required></div>
+        <div class="row">
+          <div class="col-3"><label class="fw-bold" for="email">Email<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-9">
+            <input type="email" name="email" class="form-control" id="last_email" required>
+            <p id="email_msg" class="text-danger"></p>
+          </div>
           <div class="invalid-feedback">This field is required</div>
         </div>
       </div> 
 
-      <div class="card-body p-5 step" style="display: none;" >
+      <div id="other_info" class="card-body p-5 step" style="display: none;" >
         <div class="text-center">
-          <h5 class="card-title font-weight-bold pb-2">OTHER INFORMATION</h5>
+          <h5 class="card-title fw-bold pb-2">OTHER INFORMATION</h5>
         </div>
             <div class="mb-3">
-              <label>Gross Annual Income Details<b style="color: #dc3545;">*</b></label>
-              <div class="d-block">
-                <input class="form-check-input" type="radio" name="income" id="b1l" value="below 1 lac">
-                <label class="form-check-label" for="b1l">Below 1 Lac</label>
-              </div>
-              <div class="d-block">
-                <input class="form-check-input" type="radio" name="income" id="1-5" value="1-5 lac">
-                <label class="form-check-label" for="1-5">1-5 Lac</label>
-              </div>
-              <div class="d-block">
-                <input class="form-check-input" type="radio" name="income" id="5-10" value="5-10 lac">
-                <label class="form-check-label" for="5-10">5-10 Lac</label>
-              </div>
-              <div class="d-block">
+            <label class="fw-bold">Gross Annual Income Details<b style="color: #dc3545;">*</b></label>
+            <div class="row">
+                <div class="d-block col-4">
+                  <input class="form-check-input" type="radio" name="income" id="b1l" value="below 1 lac">
+                  <label class="form-check-label" for="b1l">Below 1 Lac</label>
+                </div>
+                <div class="d-block col-4">
+                  <input class="form-check-input" type="radio" name="income" id="1-5" value="1-5 lac">
+                  <label class="form-check-label" for="1-5">1-5 Lac</label>
+                </div>
+                <div class="d-block col-4">
+                  <input class="form-check-input" type="radio" name="income" id="5-10" value="5-10 lac">
+                  <label class="form-check-label" for="5-10">5-10 Lac</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="d-block col-4">
                 <input class="form-check-input" type="radio" name="income" id="10-25" value="10-25 lac">
                 <label class="form-check-label" for="10-25">10-25 Lac</label>
               </div>
-              <div class="d-block">
+              <div class="d-block col-4">
                 <input class="form-check-input" type="radio" name="income" id="25" value=">25 lac">
                 <label class="form-check-label" for="25">>25 Lac</label>
               </div>
-              <div class="invalid-feedback">This field is required</div>
             </div>
+          </div>
+              <div class="invalid-feedback">This field is required</div>
+
 
             <div class="mb-3">
-              <label>Occupation Deatils<b style="color: #dc3545;">*</b></label>
+              <label class="fw-bold">Occupation Deatils<b style="color: #dc3545;">*</b></label>
               <div class="row">
                 <div class="col-4">
                   <input class="form-check-input" type="radio" name="occupation" id="o1" value="Private Sector">
@@ -218,7 +246,7 @@
             </div>
 
             <div class="mb-3">
-              <label>Please select as applicable<b style="color: #dc3545;">*</b></label>
+              <label class="fw-bold">Please select as applicable<b style="color: #dc3545;">*</b></label>
               <div class="d-block">
                 <input class="form-check-input" type="radio" name="p_status" id="p1" value="Politically Exposed Person">
                 <label class="form-check-label" for="p1">Politically Exposed Person</label>
@@ -244,21 +272,21 @@
 
 
 
-      <div class="card-body p-5 step" style="display: none">
+      <div id="investment_profile" class="card-body p-5 step" style="display: none;">
         <div class="text-center">
-          <h5 class="card-title font-weight-bold pb-2">INVESTMENT PROFILE</h5>
+          <h5 class="card-title fw-bold pb-2">INVESTMENT PROFILE</h5>
         </div>
         <div class="mb-3 row">
-          <div class="col-3"><label for="exp_sec">Investment Experience in Securities</label></div>
+          <div class="col-3"><label class="fw-bold" for="exp_sec">Investment Experience in Securities</label></div>
           <div class="col-9"><textarea type="text" name="exp_sec" class="form-control" id="exp_sec"></textarea></div>
         </div>
         <div class="mb-3 row">
-          <div class="col-3"><label for="goals">Overall Investment Goals</div>
+          <div class="col-3"><label class="fw-bold" for="goals">Overall Investment Goals</div>
           <div class="col-9"><textarea type="text" name="goals" class="form-control" id="goals" ></textarea></div>
           <div class="invalid-feedback">This field is required</div>
         </div>
         <div class="mb-3 row">
-          <div class="col-3"><label>Risk Tolerance<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-3"><label class="fw-bold">Risk Tolerance<b style="color: #dc3545;">*</b></label></div>
           <div class="col-9">  
             <input class="form-check-input" type="radio" name="tolerance" id="high" value="high">
             <label class="form-check-label me-5" for="high">High</label>
@@ -271,8 +299,8 @@
         </div>
 
         <div class="mb-3 row">
-          <div class="col-3"><label for="objectives">Investment Objectives<b style="color: #dc3545;">*</b></label></div>
-          <div class="col-9"><textarea type="text" name="objectives" class="form-control" id="objectives" required></textarea></div>
+          <div class="col-3"><label class="fw-bold" for="objectives">Investment Objectives<b style="color: #dc3545;">*</b></label></div>
+          <div class="col-9"><textarea type="text" name="objectives" class="form-control" id="last_objectives" required></textarea></div>
           <div class="invalid-feedback">This field is required</div>
         </div>
       </div>
@@ -280,9 +308,11 @@
       <div class="card-footer">
         <button class="action back btn btn-sm btn-outline-warning" style="display: none">Back</button>
         <button class="action next btn btn-sm btn-outline-secondary float-end" disabled="">Next</button>
-        <button class="action submit btn btn-sm btn-outline-success float-end" style="display: none">Submit</button>
+        <button type="submit" class="action submit btn btn-sm btn-outline-success float-end" style="display: none">Submit</button>
       </div>
+    
     </div>
+  </form>
 
   </div>
 </div>
@@ -299,6 +329,17 @@
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js'></script>
 <!-- Multi-step Form JS -->
 <script src="js/bootstrap-multi-step-form.js"></script>
+
+<script src="js/some.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+
   
+  
+ 
+
+
   </body>
 </html>

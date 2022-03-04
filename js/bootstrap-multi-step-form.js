@@ -50,19 +50,37 @@ $(".radio-group .radio").on("click", function () {
     $(".searchfield").hide();
   }
 });*/
+
+
+
+jQuery(function($){ // wait until the DOM is ready
+  $("#b_date").datepicker({
+      setDate:new Date(),       
+      todayHighlight: true,
+      orientation:"bottom"
+  });
+});
+
+
 var step = 1;
+var counter=0;
 $(document).ready(function () { stepProgress(step); });
 
 $(".next").on("click", function () {
   var nextstep = false;
   if (step == 1) {
-    nextstep = checkForm("identity_details");
+    nextstep = checkForm("identity_details") && validate_form("identity_details");
+    counter = 1;
   }
   else if (step == 2) {
-    nextstep = checkForm("address_details");
+    counter = 1;
+    nextstep = checkForm("address_details") && validate_form("address_details");
   }
   else if (step == 3) {
     nextstep = checkForm("other_info");
+  }
+  else if (step == 4) {
+    nextstep = checkForm("investment_profile");
   }
   else {
     nextstep = true;
@@ -135,6 +153,35 @@ hideButtons = function (step) {
   }
 }*/
 
+
+
+// validation of email and PAN number
+
+function validate_form(form_name){
+  var resp = true;
+  if(form_name=="address_details"){
+    let email = $("#last_email").val();
+    let check_email = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/g.test(email);
+    if (check_email==false){
+      document.getElementById("email_msg").innerHTML="Please Enter valid Email Id";
+      resp = false;
+      return resp;
+    }
+  }
+  else if (form_name == "identity_details") {
+    let pan_no = $("#pan").val();
+    let check_pan = /\W+/g.test(pan_no);
+    if(check_pan==true){
+      document.getElementById("pan_msg").innerHTML="Please Enter valid PAN number";
+      resp = false;
+      return resp;
+    }
+  }
+  counter = 1;
+  return resp;
+}
+
+
 function checkForm(val) {
   // CHECK IF ALL "REQUIRED" FIELD ALL FILLED IN
   var valid = true;
@@ -149,8 +196,16 @@ function checkForm(val) {
   return valid;
 }
 
-$( "input[id^=last]").keydown(function() {
-  $(".next").prop("disabled", false);
+
+$("input[id^=last]").keydown(function() {
+  if($("input[id^=last]").val()!=""){
+    $(".next").prop("disabled", false);
+    $(".next").prop("class", "action next btn btn-sm btn-primary float-end");
+  }
+  else{
+    $(".next").prop("disabled", true);
+    $(".next").prop("class", "action next btn btn-sm btn-secondary float-end");
+  }
 });
 
 $("input[name=occupation]").on("click", function (){
@@ -168,5 +223,12 @@ $("#same").on("click",function(){
     }
     else{
       $("#communication_address").val("");
+    }
+});
+
+$("#last_aadhar,#mobile").keydown(function(event){
+    let event_array = [8,35,36,37,39,46,48,49,50,51,52,53,54,55,56,57,58,59,96,97,98,99,100,101,102,103,104,105] 
+    if(!event_array.includes(event.which)){
+      event.preventDefault();
     }
 });
